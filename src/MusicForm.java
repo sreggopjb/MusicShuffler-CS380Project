@@ -156,6 +156,8 @@ public class MusicForm extends javax.swing.JFrame {
             player.clip.loop(0);
         }
         isLooping = !isLooping;
+        btnPause.setText("Pause");
+        isPlaying = true;
     }//GEN-LAST:event_btnLoopActionPerformed
 
     /**
