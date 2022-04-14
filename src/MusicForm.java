@@ -136,6 +136,7 @@ public class MusicForm extends javax.swing.JFrame {
             File chosen = new File(openFileChooser.getSelectedFile().getAbsolutePath());
             txtFileLocation.setText(chosen.toString());
             filepath = txtFileLocation.getText();
+            btnPause.setText("Pause");
             player.clip.stop();
             player.clip.setMicrosecondPosition(0);
             clipTimePosition = 0;
