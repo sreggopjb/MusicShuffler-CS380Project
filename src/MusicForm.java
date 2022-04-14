@@ -135,13 +135,14 @@ public class MusicForm extends javax.swing.JFrame {
         if(check == JFileChooser.APPROVE_OPTION){
             File chosen = new File(openFileChooser.getSelectedFile().getAbsolutePath());
             txtFileLocation.setText(chosen.toString());
-        }
-       
-        filepath = txtFileLocation.getText();
-        player.clip.stop();
-        player.clip.setMicrosecondPosition(0);
-        clipTimePosition = 0;
-        player.loadMusic(filepath);
+            filepath = txtFileLocation.getText();
+            player.clip.stop();
+            player.clip.setMicrosecondPosition(0);
+            clipTimePosition = 0;
+            player.loadMusic(filepath);
+
+        }       
+        
     }//GEN-LAST:event_btnLoadActionPerformed
 
     private void btnPlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayActionPerformed
