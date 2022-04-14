@@ -1,5 +1,9 @@
 
 import javax.sound.sampled.Clip;
+import java.io.File;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -13,12 +17,16 @@ import javax.sound.sampled.Clip;
  */
 public class MusicForm extends javax.swing.JFrame {
 
+    private final JFileChooser openFileChooser;
+
     /**
      * Creates new form MusicForm
      */
     public MusicForm() {
         initComponents();
         player.loadMusic(filepath);
+        openFileChooser = new JFileChooser();
+        openFileChooser.setFileFilter(new FileNameExtensionFilter("Music Files", "wav","mp3"));
     }
     static musicPlayer player = musicPlayer.getInstance();
     static String filepath = "Sample.wav";
@@ -121,6 +129,9 @@ public class MusicForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadActionPerformed
+       
+        openFileChooser.showOpenDialog(null);
+       
         filepath = txtFileLocation.getText();
         player.clip.stop();
         player.clip.setMicrosecondPosition(0);
