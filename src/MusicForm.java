@@ -130,7 +130,12 @@ public class MusicForm extends javax.swing.JFrame {
 
     private void btnLoadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadActionPerformed
        
-        openFileChooser.showOpenDialog(null);
+        int check = openFileChooser.showOpenDialog(null);
+
+        if(check == JFileChooser.APPROVE_OPTION){
+            File chosen = new File(openFileChooser.getSelectedFile().getAbsolutePath());
+            txtFileLocation.setText(chosen.toString());
+        }
        
         filepath = txtFileLocation.getText();
         player.clip.stop();
