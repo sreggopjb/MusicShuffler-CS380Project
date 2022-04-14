@@ -138,7 +138,7 @@ public class MusicForm extends javax.swing.JFrame {
 
     private void btnPauseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPauseActionPerformed
         if(isPlaying){
-            clipTimePosition = player.clip.getMicrosecondLength();
+            clipTimePosition = player.clip.getMicrosecondPosition();
             player.clip.stop();
             btnPause.setText("Resume");
         }else{
