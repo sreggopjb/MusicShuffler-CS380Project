@@ -3,7 +3,9 @@ import javax.sound.sampled.Clip;
 import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
-
+import javazoom.jl.converter.Converter;
+import javazoom.jl.converter.jlc;
+import javazoom.jl.decoder.JavaLayerException;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -19,6 +21,8 @@ public class MusicForm extends javax.swing.JFrame {
 
     private final JFileChooser openFileChooser;
 
+    Converter c = new Converter();
+
     /**
      * Creates new form MusicForm
      */
@@ -26,7 +30,7 @@ public class MusicForm extends javax.swing.JFrame {
         initComponents();
         player.loadMusic(filepath);
         openFileChooser = new JFileChooser();
-        openFileChooser.setFileFilter(new FileNameExtensionFilter("Music Files", "wav","mp3"));
+        openFileChooser.setFileFilter(new FileNameExtensionFilter("Music Files", "mp3"));
     }
     static musicPlayer player = musicPlayer.getInstance();
     static String filepath = "Sample.wav";
@@ -134,6 +138,20 @@ public class MusicForm extends javax.swing.JFrame {
 
         if(check == JFileChooser.APPROVE_OPTION){
             File chosen = new File(openFileChooser.getSelectedFile().getAbsolutePath());
+
+            String type = openFileChooser.getFileFilter().toString();
+
+            if(type == "mp3"){
+
+                try {
+                    c.convert(chosen.toString(), chosen.toString());
+                } catch (JavaLayerException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+           
+
             txtFileLocation.setText(chosen.toString());
             filepath = txtFileLocation.getText();
             btnPause.setText("Pause");
